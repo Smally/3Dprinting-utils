@@ -29,7 +29,7 @@ class MultiOutputMobileNetV2(nn.Module):
         class_output = self.classification_head(x)
         return reg_output, class_output
 
-checkpoint = torch.load('epoch=9-step=2240.ckpt', map_location=torch.device('cpu'))
+checkpoint = torch.load('f1_optimised_10_epoch.ckpt', map_location=torch.device('cpu'))
 # Print model keys in checkpoint
 # print("Keys in checkpoint:", checkpoint['state_dict'].keys())
 
@@ -75,7 +75,7 @@ while True:
 
     # Handle outputs here
     _, predicted_class = torch.max(class_output, 1)
-    predicted_regression = reg_output.item()
+    # predicted_regression = reg_output.item()
     print('Predicted Class:', predicted_class.item())
 
     # # During your processing loop, replace cv2.imshow with matplotlib display
